@@ -90,3 +90,11 @@
 /user-service/target/classes/com/aka/user/repositories/UserRepository.class
 /user-service/target/classes/com/aka/user/services/UserService.class
 /user-service/target/classes/com/aka/user/services/impl/UserServiceImpl.class
+/aggregator-service/target/classes/application.yaml
+/loyalty-service/target/classes/application.yaml
+/order-service/target/classes/application.yaml
+/user-service/target/classes/application.yaml
+/loyalty-service/target/classes/data.sql
+/order-service/target/classes/data.sql
+/user-service/target/classes/data.sql
+/order-service/target/classes/com/aka/order/OrderApplication.class
