@@ -1,6 +1,6 @@
-package com.example.aggregator.service;
+package com.aka.aggregator.service;
 
-import com.example.aggregator.models.User;
+import com.aka.aggregator.models.User;
 
 public interface UserService {
     User fetchUser (Long userId);

@@ -1,4 +1,4 @@
-package com.example.aggregator.models;
+package com.aka.aggregator.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

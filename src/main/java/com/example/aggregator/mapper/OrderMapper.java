@@ -1,7 +1,7 @@
-package com.example.aggregator.mapper;
+package com.aka.aggregator.mapper;
 
-import com.example.aggregator.dto.OrderDto;
-import com.example.aggregator.models.Order;
+import com.aka.aggregator.dto.OrderDto;
+import com.aka.aggregator.models.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

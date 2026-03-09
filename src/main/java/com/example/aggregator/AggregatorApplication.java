@@ -1,4 +1,4 @@
-package com.example.aggregator;
+package com.aka.aggregator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

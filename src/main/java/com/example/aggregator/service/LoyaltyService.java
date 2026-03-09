@@ -1,6 +1,6 @@
-package com.example.aggregator.service;
+package com.aka.aggregator.service;
 
-import com.example.aggregator.models.Loyalty;
+import com.aka.aggregator.models.Loyalty;
 
 public interface LoyaltyService {
     Loyalty fetchLoyalty (Long userId);

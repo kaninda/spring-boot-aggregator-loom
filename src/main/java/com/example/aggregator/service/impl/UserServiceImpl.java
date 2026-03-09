@@ -1,8 +1,8 @@
-package com.example.aggregator.service.impl;
+package com.aka.aggregator.service.impl;
 
-import com.example.aggregator.models.User;
-import com.example.aggregator.repositories.UserRepository;
-import com.example.aggregator.service.UserService;
+import com.aka.aggregator.models.User;
+import com.aka.aggregator.repositories.UserRepository;
+import com.aka.aggregator.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

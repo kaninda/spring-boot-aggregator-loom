@@ -1,9 +1,9 @@
-package com.example.aggregator.service.impl;
+package com.aka.aggregator.service.impl;
 
-import com.example.aggregator.controllers.UserController;
-import com.example.aggregator.models.Loyalty;
-import com.example.aggregator.repositories.LoyaltyRepository;
-import com.example.aggregator.service.LoyaltyService;
+import com.aka.aggregator.controllers.UserController;
+import com.aka.aggregator.models.Loyalty;
+import com.aka.aggregator.repositories.LoyaltyRepository;
+import com.aka.aggregator.service.LoyaltyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

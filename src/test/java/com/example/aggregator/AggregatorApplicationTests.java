@@ -1,4 +1,4 @@
-package com.example.aggregator;
+package com.aka.aggregator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

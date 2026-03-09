@@ -1,11 +1,11 @@
-package com.example.aggregator.controllers;
+package com.aka.aggregator.controllers;
 
-import com.example.aggregator.dto.UserDto;
-import com.example.aggregator.mapper.UserMapper;
-import com.example.aggregator.models.Order;
-import com.example.aggregator.models.User;
-import com.example.aggregator.service.OrderService;
-import com.example.aggregator.service.UserService;
+import com.aka.aggregator.dto.UserDto;
+import com.aka.aggregator.mapper.UserMapper;
+import com.aka.aggregator.models.Order;
+import com.aka.aggregator.models.User;
+import com.aka.aggregator.service.OrderService;
+import com.aka.aggregator.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

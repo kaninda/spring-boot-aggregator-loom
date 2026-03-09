@@ -1,7 +1,7 @@
-package com.example.aggregator.mapper;
+package com.aka.aggregator.mapper;
 
-import com.example.aggregator.dto.UserDto;
-import com.example.aggregator.models.User;
+import com.aka.aggregator.dto.UserDto;
+import com.aka.aggregator.models.User;
 import org.springframework.stereotype.Component;
 
 @Component

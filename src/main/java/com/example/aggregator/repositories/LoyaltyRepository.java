@@ -1,6 +1,6 @@
-package com.example.aggregator.repositories;
+package com.aka.aggregator.repositories;
 
-import com.example.aggregator.models.Loyalty;
+import com.aka.aggregator.models.Loyalty;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LoyaltyRepository extends JpaRepository<Loyalty, Long> {

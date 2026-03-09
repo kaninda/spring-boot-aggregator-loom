@@ -1,7 +1,7 @@
-package com.example.aggregator.mapper;
+package com.aka.aggregator.mapper;
 
-import com.example.aggregator.dto.LoyaltyDto;
-import com.example.aggregator.models.Loyalty;
+import com.aka.aggregator.dto.LoyaltyDto;
+import com.aka.aggregator.models.Loyalty;
 import org.springframework.stereotype.Component;
 
 @Component

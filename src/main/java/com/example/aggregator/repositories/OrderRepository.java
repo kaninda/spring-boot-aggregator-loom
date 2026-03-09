@@ -1,7 +1,7 @@
-package com.example.aggregator.repositories;
+package com.aka.aggregator.repositories;
 
 
-import com.example.aggregator.models.Order;
+import com.aka.aggregator.models.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

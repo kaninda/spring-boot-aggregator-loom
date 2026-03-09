@@ -1,4 +1,4 @@
-package com.example.aggregator.dto;
+package com.aka.aggregator.dto;
 
 import java.util.List;
 

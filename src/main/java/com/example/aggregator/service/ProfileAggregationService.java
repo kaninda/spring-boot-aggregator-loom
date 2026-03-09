@@ -1,6 +1,6 @@
-package com.example.aggregator.service;
+package com.aka.aggregator.service;
 
-import com.example.aggregator.dto.ProfileResponse;
+import com.aka.aggregator.dto.ProfileResponse;
 
 import java.util.concurrent.ExecutionException;
 

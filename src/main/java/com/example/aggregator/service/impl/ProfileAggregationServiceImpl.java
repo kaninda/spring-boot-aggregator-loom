@@ -1,11 +1,11 @@
-package com.example.aggregator.service.impl;
+package com.aka.aggregator.service.impl;
 
-import com.example.aggregator.dto.*;
-import com.example.aggregator.exception.ResourceNotFoundException;
-import com.example.aggregator.models.Loyalty;
-import com.example.aggregator.models.User;
-import com.example.aggregator.repositories.UserRepository;
-import com.example.aggregator.service.ProfileAggregationService;
+import com.aka.aggregator.dto.*;
+import com.aka.aggregator.exception.ResourceNotFoundException;
+import com.aka.aggregator.models.Loyalty;
+import com.aka.aggregator.models.User;
+import com.aka.aggregator.repositories.UserRepository;
+import com.aka.aggregator.service.ProfileAggregationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

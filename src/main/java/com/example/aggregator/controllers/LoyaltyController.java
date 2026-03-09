@@ -1,11 +1,11 @@
-package com.example.aggregator.controllers;
+package com.aka.aggregator.controllers;
 
-import com.example.aggregator.dto.LoyaltyDto;
-import com.example.aggregator.mapper.LoyaltyMapper;
-import com.example.aggregator.models.Loyalty;
-import com.example.aggregator.models.Order;
-import com.example.aggregator.service.LoyaltyService;
-import com.example.aggregator.service.OrderService;
+import com.aka.aggregator.dto.LoyaltyDto;
+import com.aka.aggregator.mapper.LoyaltyMapper;
+import com.aka.aggregator.models.Loyalty;
+import com.aka.aggregator.models.Order;
+import com.aka.aggregator.service.LoyaltyService;
+import com.aka.aggregator.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
