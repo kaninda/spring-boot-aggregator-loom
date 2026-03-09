@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.ExecutionException;
+
 
 @RequestMapping(
         name = "ProfileController",
@@ -28,7 +30,7 @@ public class ProfileController {
         this.profileAggregationService = profileAggregationService;
     }
     @GetMapping("/{userId}")
-    public ResponseEntity<ProfileResponse> getUser(@PathVariable  Long userId) {
+    public ResponseEntity<ProfileResponse> getUser(@PathVariable  Long userId) throws ExecutionException, InterruptedException {
         logger.info("Thread current: {}", Thread.currentThread());
         ProfileResponse profileResponse = profileAggregationService.buildProfile(userId);
         return ResponseEntity.status(HttpStatus.OK).body(profileResponse);
