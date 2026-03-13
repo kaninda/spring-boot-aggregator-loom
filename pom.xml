@@ -19,10 +19,18 @@
 	<name>aggregator</name>
 	<description>aggregator project for Spring Boot</description>
 
+	<scm>
+		<connection>scm:git:git://github.com/kaninda/spring-boot-aggregator-loom.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/kaninda/spring-boot-aggregator-loom.git</developerConnection>
+		<url>https://github.com/kaninda/spring-boot-aggregator-loom</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<properties>
 		<java.version>21</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson-bom.version>2.21.1</jackson-bom.version>
+
 	</properties>
 
 	<distributionManagement>
@@ -79,6 +87,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
+				<version>3.3.1</version>
 				<configuration>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 				</configuration>
