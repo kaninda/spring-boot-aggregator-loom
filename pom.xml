@@ -20,8 +20,8 @@
 	<description>aggregator project for Spring Boot</description>
 
 	<scm>
-		<connection>scm:git:git://github.com/kaninda/spring-boot-aggregator-loom.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/kaninda/spring-boot-aggregator-loom.git</developerConnection>
+		<connection>scm:git:https://github.com/kaninda/spring-boot-aggregator-loom.git</connection>
+		<developerConnection>scm:git:https://github.com/kaninda/spring-boot-aggregator-loom.git</developerConnection>
 		<url>https://github.com/kaninda/spring-boot-aggregator-loom</url>
 		<tag>HEAD</tag>
 	</scm>
