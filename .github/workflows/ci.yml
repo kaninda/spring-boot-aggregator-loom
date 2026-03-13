@@ -3,13 +3,13 @@ name: Java CI
 on:
   push:
     branches:
-      - master
-      - 'feature/**'
+    - master
+    - 'feature/**'
     tags:
-      - 'v*'
+    - 'v*'
   pull_request:
     branches:
-      - master
+    - master
 
 permissions:
   contents: read
@@ -20,43 +20,43 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+    - name: Checkout source code
+      uses: actions/checkout@v4
 
-      - name: Set up JDK 21 and Maven settings
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
-          cache: maven
-          server-id: github
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
+    - name: Set up JDK 21 and Maven settings
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '21'
+        cache: maven
+        server-id: github
+        server-username: GITHUB_ACTOR
+        server-password: GITHUB_TOKEN
 
-      - name: Show Maven version
-        run: mvn -version
+    - name: Show Maven version
+      run: mvn -version
 
-      - name: Build and test
-        run: mvn -B clean verify
+    - name: Build and test
+      run: mvn -B clean verify
 
-      - name: Upload JARs as workflow artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: maven-jars
-          path: |
-            aggregator-service/target/*.jar
-            user-service/target/*.jar
-            order-service/target/*.jar
-            loyalty-service/target/*.jar
+    - name: Upload JARs as workflow artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: maven-jars
+        path: |
+          aggregator-service/target/*.jar
+          user-service/target/*.jar
+          order-service/target/*.jar
+          loyalty-service/target/*.jar
 
-      - name: Publish SNAPSHOT packages on master
-        if: github.ref == 'refs/heads/master'
-        run: mvn -B deploy -DskipTests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish SNAPSHOT packages on master
+      if: github.ref == 'refs/heads/master'
+      run: mvn -B deploy -DskipTests
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish RELEASE packages on version tag
-        if: startsWith(github.ref, 'refs/tags/v')
-        run: mvn -B deploy -DskipTests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish RELEASE packages on version tag
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: mvn -B deploy -DskipTests
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
