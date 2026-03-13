@@ -5,7 +5,6 @@ import com.aka.aggregator.services.ProfileAggregationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 

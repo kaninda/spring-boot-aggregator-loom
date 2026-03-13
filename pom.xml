@@ -25,6 +25,18 @@
 		<jackson-bom.version>2.21.1</jackson-bom.version>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/kaninda/spring-boot-aggregator-loom</url>
+		</repository>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/kaninda/spring-boot-aggregator-loom</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<modules>
 		<module>aggregator-service</module>
 		<module>user-service</module>
