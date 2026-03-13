@@ -15,6 +15,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        ref: master
         fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -37,7 +38,13 @@ jobs:
       run: |
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kaninda/spring-boot-aggregator-loom.git
 
+    - name: Sync with remote
+      run: |
+        git checkout master
+        git fetch origin
+        git reset --hard origin/master
+
     - name: Run Maven release
-      run: mvn -B release:prepare release:perform
+      run: mvn -B release:clean release:prepare release:perform
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
