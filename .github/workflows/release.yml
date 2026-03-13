@@ -17,7 +17,7 @@ jobs:
       with:
         ref: master
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.RELEASE_PAT }}
 
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -36,7 +36,7 @@ jobs:
 
     - name: Configure authenticated remote
       run: |
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kaninda/spring-boot-aggregator-loom.git
+        git remote set-url origin https://x-access-token:${{ secrets.RELEASE_PAT }}@github.com/kaninda/spring-boot-aggregator-loom.git
 
     - name: Sync with remote
       run: |
