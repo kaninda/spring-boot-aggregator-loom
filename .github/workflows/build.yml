@@ -37,19 +37,26 @@ jobs:
     - name: Build and test
       run: mvn -B clean verify
 
-    - name: Upload JARs as workflow artifacts
-      if: github.ref != 'refs/heads/master'
-      uses: actions/upload-artifact@v4
-      with:
-        name: maven-jars
-        path: |
-          aggregator-service/target/*.jar
-          user-service/target/*.jar
-          order-service/target/*.jar
-          loyalty-service/target/*.jar
-
     - name: Publish SNAPSHOT packages on master
       if: github.ref == 'refs/heads/master'
       run: mvn -B deploy -DskipTests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Login to GHCR
+      if: github.ref == 'refs/heads/master'
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build image
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mvn -pl user-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/user-service:${{ github.sha }}
+
+    - name: Push image
+      if: github.ref == 'refs/heads/master'
+      run: docker push ghcr.io/${{ github.repository_owner }}/user-service:${{ github.sha }}
