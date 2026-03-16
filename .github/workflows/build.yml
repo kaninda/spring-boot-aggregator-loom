@@ -43,6 +43,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Extract Maven version
+      id: version
+      run: |
+        VERSION=$(mvn -q -DforceStdout help:evaluate -Dexpression=project.version)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
     - name: Login to GHCR
       if: github.ref == 'refs/heads/master'
       uses: docker/login-action@v3
@@ -51,12 +57,42 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build image
+    - name: Build user-service image
       if: github.ref == 'refs/heads/master'
       run: |
         mvn -pl user-service -am spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/user-service:${{ github.sha }}
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/user-service:${VERSION}
 
-    - name: Push image
+    - name: Push user-service image
       if: github.ref == 'refs/heads/master'
-      run: docker push ghcr.io/${{ github.repository_owner }}/user-service:${{ github.sha }}
+      run: docker push ghcr.io/${{ github.repository_owner }}/user-service:${VERSION}
+
+    - name: Build order-service image
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mvn -pl order-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/order-service:${VERSION}
+
+    - name: Push order-service image
+      if: github.ref == 'refs/heads/master'
+      run: docker push ghcr.io/${{ github.repository_owner }}/order-service:${VERSION}
+
+    - name: Build loyalty-service image
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mvn -pl loyalty-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/loyalty-service:${VERSION}
+
+    - name: Push loyalty-service image
+      if: github.ref == 'refs/heads/master'
+      run: docker push ghcr.io/${{ github.repository_owner }}/loyalty-service:${VERSION}
+
+    - name: Build aggregator-service image
+      if: github.ref == 'refs/heads/master'
+      run: |
+        mvn -pl aggregator-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/aggregator-service:${VERSION}
+
+    - name: Push aggregator-service image
+      if: github.ref == 'refs/heads/master'
+      run: docker push ghcr.io/${{ github.repository_owner }}/aggregator-service:${VERSION}
