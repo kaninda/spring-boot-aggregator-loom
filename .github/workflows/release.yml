@@ -48,3 +48,54 @@ jobs:
       run: mvn -B release:clean release:prepare release:perform
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Checkout latest tag
+      run: |
+        git fetch --tags
+        TAG=$(git describe --tags --abbrev=0)
+        git checkout $TAG
+        echo "RELEASE_TAG=$TAG" >> $GITHUB_ENV
+
+    - name: Extract release version from tag checkout
+      run: |
+        VERSION=$(mvn -q -DforceStdout help:evaluate -Dexpression=project.version)
+        echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+
+    - name: Login to GHCR
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build user-service release image
+      run: |
+        mvn -pl user-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/user-service:${RELEASE_VERSION}
+
+    - name: Push user-service release image
+      run: docker push ghcr.io/${{ github.repository_owner }}/user-service:${RELEASE_VERSION}
+
+    - name: Build order-service release image
+      run: |
+        mvn -pl order-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/order-service:${RELEASE_VERSION}
+
+    - name: Push order-service release image
+      run: docker push ghcr.io/${{ github.repository_owner }}/order-service:${RELEASE_VERSION}
+
+    - name: Build loyalty-service release image
+      run: |
+        mvn -pl loyalty-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/loyalty-service:${RELEASE_VERSION}
+
+    - name: Push loyalty-service release image
+      run: docker push ghcr.io/${{ github.repository_owner }}/loyalty-service:${RELEASE_VERSION}
+
+    - name: Build aggregator-service release image
+      run: |
+        mvn -pl aggregator-service -am spring-boot:build-image \
+          -Dspring-boot.build-image.imageName=ghcr.io/${{ github.repository_owner }}/aggregator-service:${RELEASE_VERSION}
+
+    - name: Push aggregator-service release image
+      run: docker push ghcr.io/${{ github.repository_owner }}/aggregator-service:${RELEASE_VERSION}
