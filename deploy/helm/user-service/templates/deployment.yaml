@@ -23,13 +23,5 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
-          readinessProbe:
-            httpGet:
-              path: {{ .Values.probes.readiness.path }}
-              port: {{ .Values.container.port }}
-          livenessProbe:
-            httpGet:
-              path: {{ .Values.probes.liveness.path }}
-              port: {{ .Values.container.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
