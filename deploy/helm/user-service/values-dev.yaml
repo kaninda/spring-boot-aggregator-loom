@@ -1,0 +1,5 @@
+service:
+  targetPort: 8090
+
+container:
+  port: 8090
