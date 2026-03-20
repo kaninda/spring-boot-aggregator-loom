@@ -1,0 +1,23 @@
+
+image:
+  repository: ghcr.io/kaninda/aggregator-service
+  tag: 1.0.5-snapshot
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8090
+  targetPort: 8090
+
+container:
+  port: 8090
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1Gi
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+env:
+  SERVER_PORT: "8090"
