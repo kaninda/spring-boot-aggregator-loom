@@ -24,16 +24,6 @@ resources:
     cpu: 500m
     memory: 512Mi
 
-probes:
-  readiness:
-    path: /actuator/health/readiness
-    initialDelaySeconds: 10
-    periodSeconds: 10
-  liveness:
-    path: /actuator/health/liveness
-    initialDelaySeconds: 20
-    periodSeconds: 20
-
 env:
   SPRING_PROFILES_ACTIVE: default
   SERVER_PORT: "8080"
